@@ -28,3 +28,7 @@ directive:
 *	`scrollDownClass`   applies passed class name to element on downward scroll
 
 *	`offset`            ignores scrolling between top margin and offset
+
+## TODO
+* Watch attributes
+* Add `halt` option
