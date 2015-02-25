@@ -1,0 +1,18 @@
+.scroll-toggle{
+	-webkit-transition: opacity 0.4s;
+	-moz-transition: opacity 0.4s;
+	-o-transition: opacity 0.4s;
+	transition: opacity 0.4s;
+}
+.scroll-toggle-up{
+	-webkit-opacity:1;
+	-moz-opacity:1;
+	-o-opacity:1;
+	opacity:1;
+}
+.scroll-toggle-down{
+	-webkit-opacity:0;
+	-moz-opacity:0;
+	-o-opacity:0;
+	opacity:0;
+}
