@@ -32,3 +32,4 @@ directive:
 ## TODO
 * Watch attributes
 * Add `halt` option
+* Accept callback functions
