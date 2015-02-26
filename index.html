@@ -19,10 +19,12 @@
   </head>
   <body ng-controller="MyController">
     <div style="height:1000vh; width:100%;">
-      <scroll-toggle class="alert alert-info" role="alert" id="fixed-header" offset="400">
+      <div scroll-toggle class="alert alert-info" role="alert" id="fixed-header" offset="400">
         This header will toggle depending on the vertical scrolling direction
-      </scroll-toggle>
-      <center><h1>Scroll Down</h1></center>
+      </div>
+      <center style="position:fixed;bottom:20px;left:0;right:0;">
+        <h1 scroll-toggle="onScroll">{{lol.footerText}}</h1>
+      </center>
     </div>
     <script type="text/javascript">
 
@@ -31,8 +33,13 @@
         var appName = 'ScrollToggleDemo';
         var app = angular.module(appName, ['angular-scroll-toggle']);
 
-        app.controller('MyController', [function($scope, scrollToggleService){
-          console.log('loaded');
+        app.controller('MyController', ['$scope', function($scope){
+          $scope.lol = {};
+          $scope.lol.footerText = 'Scroll Down';
+          $scope.onScroll = function(direction, element){
+            if(direction) $scope.lol.footerText = 'Scroll Up';
+            else $scope.lol.footerText = 'Scroll Down';
+          }
         }])
 
       })(angular)

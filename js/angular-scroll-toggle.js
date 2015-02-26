@@ -47,7 +47,7 @@
 
   function scrollToggleDirective($window, $timeout){
     return {
-      restrict:   'AEC',
+      restrict:   'AC',
       template:   '<div ng-transclude></div>',
       transclude: true,
       link: function(scope, element, attributes){
@@ -80,6 +80,16 @@
 
         function applyToggle(direction){
           if(direction===null) return;
+          callback(direction, element);
+        }
+
+        function callback(direction, element){
+          if(attributes.scrollToggle.length) scope[attributes.scrollToggle](direction, element);
+          else defaultAction(direction);
+          scope.$apply();
+        }
+
+        function defaultAction(direction){
           element.removeClass( ( direction ? scrollOptions.scrollUpClass : scrollOptions.scrollDownClass ) );
           element.addClass( ( direction ? scrollOptions.scrollDownClass : scrollOptions.scrollUpClass ) );
         }
