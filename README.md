@@ -7,7 +7,7 @@ ScrollToggle is a small JavaScript component that lets you perform actions on el
 Include the JS and CSS files, then inject the `angular-scroll-toggle` module into your app.
 
 ```javascript
-var myApp = angular.module('myApp', ['count-to']);
+var myApp = angular.module('myApp', ['angular-scroll-toggle']);
 ```
 
 Now you can apply the directive to any element.
