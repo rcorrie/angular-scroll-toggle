@@ -23,7 +23,7 @@
         This header will toggle depending on the vertical scrolling direction
       </div>
       <center style="position:fixed;bottom:20px;left:0;right:0;">
-        <h1 scroll-toggle="onScroll">{{lol.footerText}}</h1>
+        <h1 scroll-toggle="onScroll">{{footer.text}}</h1>
       </center>
     </div>
     <script type="text/javascript">
@@ -34,11 +34,13 @@
         var app = angular.module(appName, ['angular-scroll-toggle']);
 
         app.controller('MyController', ['$scope', function($scope){
-          $scope.lol = {};
-          $scope.lol.footerText = 'Scroll Down';
+
+          $scope.footer = {};
+          $scope.footer.text = 'Scroll Down';
+
           $scope.onScroll = function(direction, element){
-            if(direction) $scope.lol.footerText = 'Scroll Up';
-            else $scope.lol.footerText = 'Scroll Down';
+            if(direction) $scope.footer.text = 'Scroll Up';
+            else $scope.footer.text = 'Scroll Down';
           }
         }])
 

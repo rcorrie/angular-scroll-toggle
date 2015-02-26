@@ -48,6 +48,7 @@
   function scrollToggleDirective($window, $timeout){
     return {
       restrict:   'AC',
+      scope: '=',
       template:   '<div ng-transclude></div>',
       transclude: true,
       link: function(scope, element, attributes){
@@ -115,6 +116,14 @@
         function getScrollTop(){
           return document.body.scrollTop;
         }
+
+        ///////// Obeservers
+        
+        //attributes.$observe('scrollToggle', init);
+        //attributes.$observe('scrollClass', init);
+        //attributes.$observe('scrollUpClass', init);
+        //attributes.$observe('scrollDownClass', init);
+        //attributes.$observe('offset', init);
 
       }
     }

@@ -16,6 +16,22 @@ Now you can apply the directive to any element.
 <div scroll-toggle> This is my element! </div>
 ```
 
+## Callback
+You can define your own callback function like so:
+```html
+<div scroll-toggle="myCallback">{{scroll.direction}}</div>
+```
+```JavaScript
+app.controller('myController', function($scope){
+	$scope.scroll = {};
+	$scope.scroll.direction;
+	$scope.myCallback = function(direction, element){
+		if(direction) $scope.scroll.direction = 'Down';
+		else $scope.scroll.direction = 'Up';
+	}
+})
+```
+
 ### Option Attributes
 
 You can add the following attributes to the element on which you applied the
@@ -30,6 +46,5 @@ directive:
 *	`offset`            ignores scrolling between top margin and offset
 
 ## TODO
-* Watch attributes
 * Add `halt` option
-* Accept callback functions
+* ~~Accept callback functions~~
