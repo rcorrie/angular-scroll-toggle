@@ -19,7 +19,9 @@ Now you can apply the directive to any element.
 ## Callback
 You can define your own callback function like so:
 ```html
-<div scroll-toggle="myCallback">{{scroll.direction}}</div>
+<div ng-controller="myController">
+	<div scroll-toggle="myCallback">{{scroll.direction}}</div>
+</div>
 ```
 ```JavaScript
 app.controller('myController', function($scope){
