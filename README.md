@@ -16,6 +16,19 @@ Now you can apply the directive to any element.
 <div scroll-toggle> This is my element! </div>
 ```
 
+You can conditionally halt the directive by passing a boolean to the `toggle-if` scope attribute, as demonstrated below.
+```javascript
+app.controller('myController', function($scope, $timeout){
+	$scope.activateScrollToggle = false;
+	$timeout(function(){
+			$scope.activateScrollToggle = true;
+	}, 5000);
+});
+```
+```html
+<div scroll-toggle toggle-if="activateScrollToggle">...</div>
+```
+
 ## Callback
 You can define your own callback function like so:
 ```html
@@ -48,5 +61,5 @@ directive:
 *	`offset`            ignores scrolling between top margin and offset
 
 ## TODO
-* Add `halt` option
+* ~~Add `halt` option~~
 * ~~Accept callback functions~~
