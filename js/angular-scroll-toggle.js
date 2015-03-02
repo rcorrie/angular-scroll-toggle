@@ -48,12 +48,16 @@
   function scrollToggleDirective($window, $timeout){
     return {
       restrict:   'AC',
-      scope:      '=',
+      scope:      {
+                    scrollToggle: '=',
+                    toggleIf:     '='
+                  },
       template:   '<div ng-transclude></div>',
       transclude: true,
       link: function(scope, element, attributes){
 
         var lastScrollTop = 0;
+        var elementHalt   = false;
 
         var scrollOptions = {
           scrollClass:      'scroll-toggle',
@@ -65,6 +69,7 @@
         init();
 
         function init(){
+          elementHalt = false;
           setOptions(attributes);
           element.addClass(scrollOptions.scrollClass);
           $timeout(function(){
@@ -74,18 +79,24 @@
           }, 500);
         };
 
+        function halt(){
+          element.removeClass(scrollOptions.scrollUpClass);
+          element.removeClass(scrollOptions.scrollDownClass);
+          elementHalt = true;
+        };
+
         function scrollListener(){
           var direction = getScrollDirection(getScrollTop());
           applyToggle(direction);
         };
 
         function applyToggle(direction){
-          if(direction===null) return;
+          if(direction===null || elementHalt) return;
           callback(direction, element);
         };
 
         function callback(direction, element){
-          if(attributes.scrollToggle.length) scope[attributes.scrollToggle](direction, element);
+          if(attributes.scrollToggle.length) scope['scrollToggle'](direction, element);
           else defaultAction(direction);
           scope.$apply();
         };
@@ -117,7 +128,11 @@
           return document.body.scrollTop;
         };
 
-      };
+        scope.$watch('toggleIf', function(active){
+          if (!angular.isUndefined(scope.toggleIf) && !active) halt();
+        });
+
+      }
     };
   };
 
