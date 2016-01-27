@@ -63,3 +63,4 @@ directive:
 ## TODO
 * ~~Add `halt` option~~
 * ~~Accept callback functions~~
+* Add timeout option
